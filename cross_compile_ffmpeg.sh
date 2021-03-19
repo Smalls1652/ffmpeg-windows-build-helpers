@@ -1335,7 +1335,7 @@ build_lame() {
   do_svn_checkout https://svn.code.sf.net/p/lame/svn/trunk/lame lame_svn r6474
   cd lame_svn
     sed -i.bak '1s/^\xEF\xBB\xBF//' libmp3lame/i386/nasm.h # Remove a UTF-8 BOM that breaks nasm if it's still there; should be fixed in trunk eventually https://sourceforge.net/p/lame/patches/81/
-    generic_configure "--enable-nasm"
+    generic_configure "--enable-nasm --disable-decoder --disable-frontend"
     do_make_and_make_install
   cd ..
 }
